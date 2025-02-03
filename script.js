@@ -13,3 +13,22 @@ function getComputerChoice()
         default: return SCISSORS;
     }
 }
+
+function getHumanChoice()
+{
+    let choice = prompt("What's your choice (rock, paper, scissors)?");
+
+    if (!choice)
+    {
+        return '';
+    }
+
+    choice = choice.trim().toLowerCase();
+
+    if (choice != ROCK && choice != PAPER && choice != SCISSORS)
+    {
+        return '';
+    }
+
+    return choice;
+}
