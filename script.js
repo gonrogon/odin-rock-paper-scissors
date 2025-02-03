@@ -9,8 +9,7 @@ function getComputerChoice()
 {
     let random = Math.trunc(Math.random() * 3);
 
-    switch (random)
-    {
+    switch (random) {
         case 0:  return ROCK;
         case 1:  return PAPER;
         default: return SCISSORS;
@@ -21,15 +20,13 @@ function getHumanChoice()
 {
     let choice = prompt("What's your choice (rock, paper, scissors)?");
 
-    if (!choice)
-    {
+    if (!choice) {
         return '';
     }
 
     choice = choice.trim().toLowerCase();
 
-    if (choice != ROCK && choice != PAPER && choice != SCISSORS)
-    {
+    if (choice != ROCK && choice != PAPER && choice != SCISSORS) {
         return '';
     }
 
@@ -40,8 +37,7 @@ function playRound(humanChoice, computerChoice)
 {
     // Human choice validation and normalization (case-insensitive) is already done in
     // the function "getHumanChoice".
-    switch (humanChoice)
-    {
+    switch (humanChoice) {
         case ROCK:
             switch (computerChoice)
             {
@@ -69,7 +65,24 @@ function playRound(humanChoice, computerChoice)
     }
 }
 
-const humanChoice     = getHumanChoice();
-const compueterChoice = getComputerChoice();
+function playGame()
+{
+    for (let i = 0; i < 5; i++) {
+        let humanChoice    = getHumanChoice();
+        let computerChoice = getComputerChoice();
 
-playRound(humanChoice, compueterChoice);
+        playRound(humanChoice, computerChoice);
+    }
+
+    if (humanScore > computerScore) {
+        console.log("GAME OVER: You win!");
+    }
+    else if (humanScore < computerScore) {
+        console.log("GAME OVER: You lose!");
+    }
+    else {
+        console.log("GAME OVER: Tie!");
+    }
+}
+
+playGame();
