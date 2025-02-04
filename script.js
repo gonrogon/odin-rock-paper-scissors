@@ -65,6 +65,10 @@ function playRound(humanChoice, computerChoice)
             }
             break;
     }
+
+    if (humanScore >= 5 || computerScore >= 5) {
+        endGame()
+    }
 }
 
 function addResult(text)
@@ -74,6 +78,20 @@ function addResult(text)
     
     score.textContent  = `Score: Human ${humanScore}, Computer ${computerScore}`;
     result.textContent = text;
+}
+
+function endGame() {
+    let result = document.querySelector("#results");
+
+    if (humanScore >= 5) {
+        result.textContent = "YOU WIN!";
+    }
+    else {
+        result.textContent = "COMPUTER WIN!";
+    }
+
+    humanScore    = 0;
+    computerScore = 0;
 }
 
 function setup() {
