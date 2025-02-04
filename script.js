@@ -65,24 +65,18 @@ function playRound(humanChoice, computerChoice)
     }
 }
 
-function playGame()
-{
-    for (let i = 0; i < 5; i++) {
-        let humanChoice    = getHumanChoice();
-        let computerChoice = getComputerChoice();
+function setup() {
+    document.querySelector("#rock").addEventListener('click', e =>  {
+        playRound(ROCK, getComputerChoice());
+    });
 
-        playRound(humanChoice, computerChoice);
-    }
+    document.querySelector("#paper").addEventListener('click', e => {
+        playRound(PAPER, getComputerChoice());
+    })
 
-    if (humanScore > computerScore) {
-        console.log("GAME OVER: You win!");
-    }
-    else if (humanScore < computerScore) {
-        console.log("GAME OVER: You lose!");
-    }
-    else {
-        console.log("GAME OVER: Tie!");
-    }
+    document.querySelector('#scissors').addEventListener('click', e => {
+        playRound(SCISSORS, getComputerChoice());
+    })
 }
 
-playGame();
+setup();
